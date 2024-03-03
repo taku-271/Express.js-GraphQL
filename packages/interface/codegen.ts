@@ -9,7 +9,7 @@ const config: CodegenConfig = {
         contextType: "../context#GraphQLContext",
       },
     }),
-    "../frontend/src/graphql/graphql.ts": {
+    "../frontend/graphql/graphql.ts": {
       plugins: ["typescript"],
     },
   },
