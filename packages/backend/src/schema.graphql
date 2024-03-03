@@ -3,8 +3,15 @@ type Todo {
   title: String!
   description: String
   isCompleted: Boolean
+  userId: Int!
+}
+
+type User {
+  id: Int!
+  name: String!
+  todo: [Todo]
 }
 
 type Query {
-  getTodos: [Todo]!
+  getUsers: [User]
 }

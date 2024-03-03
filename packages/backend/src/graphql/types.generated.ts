@@ -18,7 +18,7 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  getTodos: Array<Maybe<Todo>>;
+  getUsers?: Maybe<Array<Maybe<User>>>;
 };
 
 export type Todo = {
@@ -27,6 +27,14 @@ export type Todo = {
   id: Scalars['Int']['output'];
   isCompleted?: Maybe<Scalars['Boolean']['output']>;
   title: Scalars['String']['output'];
+  userId: Scalars['Int']['output'];
+};
+
+export type User = {
+  __typename?: 'User';
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  todo?: Maybe<Array<Maybe<Todo>>>;
 };
 
 
@@ -105,6 +113,7 @@ export type ResolversTypes = {
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  User: ResolverTypeWrapper<User>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -114,10 +123,11 @@ export type ResolversParentTypes = {
   String: Scalars['String']['output'];
   Int: Scalars['Int']['output'];
   Boolean: Scalars['Boolean']['output'];
+  User: User;
 };
 
 export type QueryResolvers<ContextType = GraphQLContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  getTodos?: Resolver<Array<Maybe<ResolversTypes['Todo']>>, ParentType, ContextType>;
+  getUsers?: Resolver<Maybe<Array<Maybe<ResolversTypes['User']>>>, ParentType, ContextType>;
 };
 
 export type TodoResolvers<ContextType = GraphQLContext, ParentType extends ResolversParentTypes['Todo'] = ResolversParentTypes['Todo']> = {
@@ -125,11 +135,20 @@ export type TodoResolvers<ContextType = GraphQLContext, ParentType extends Resol
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   isCompleted?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type UserResolvers<ContextType = GraphQLContext, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  todo?: Resolver<Maybe<Array<Maybe<ResolversTypes['Todo']>>>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = GraphQLContext> = {
   Query?: QueryResolvers<ContextType>;
   Todo?: TodoResolvers<ContextType>;
+  User?: UserResolvers<ContextType>;
 };
 

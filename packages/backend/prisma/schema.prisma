@@ -18,4 +18,12 @@ model todo {
   title String
   description String?
   is_completed Boolean @default(false)
+  user_id Int
+  user user @relation(fields: [user_id], references: [id])
+}
+
+model user {
+  id Int @id @default(autoincrement())
+  name String
+  todo todo[]
 }

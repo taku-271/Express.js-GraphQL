@@ -16,7 +16,7 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  getTodos: Array<Maybe<Todo>>;
+  getUsers?: Maybe<Array<Maybe<User>>>;
 };
 
 export type Todo = {
@@ -25,4 +25,12 @@ export type Todo = {
   id: Scalars['Int']['output'];
   isCompleted?: Maybe<Scalars['Boolean']['output']>;
   title: Scalars['String']['output'];
+  userId: Scalars['Int']['output'];
+};
+
+export type User = {
+  __typename?: 'User';
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  todo?: Maybe<Array<Maybe<Todo>>>;
 };
