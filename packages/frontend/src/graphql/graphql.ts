@@ -14,6 +14,34 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type CreateTodoInput = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  title: Scalars['String']['input'];
+  userId: Scalars['Int']['input'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createTodo: Scalars['Boolean']['output'];
+  deleteTodo: Scalars['Boolean']['output'];
+  updateTodo: Scalars['Boolean']['output'];
+};
+
+
+export type MutationCreateTodoArgs = {
+  input: CreateTodoInput;
+};
+
+
+export type MutationDeleteTodoArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type MutationUpdateTodoArgs = {
+  input: UpdateTodoInput;
+};
+
 export type Query = {
   __typename?: 'Query';
   getUsers?: Maybe<Array<Maybe<User>>>;
@@ -26,6 +54,11 @@ export type Todo = {
   isCompleted?: Maybe<Scalars['Boolean']['output']>;
   title: Scalars['String']['output'];
   userId: Scalars['Int']['output'];
+};
+
+export type UpdateTodoInput = {
+  id: Scalars['Int']['input'];
+  isCompleted: Scalars['Boolean']['input'];
 };
 
 export type User = {

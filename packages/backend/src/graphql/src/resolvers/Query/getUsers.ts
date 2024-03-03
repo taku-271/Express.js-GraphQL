@@ -1,7 +1,7 @@
 import { user } from "@prisma/client";
 import type { QueryResolvers, User } from "./../../../types.generated";
-import { UserModel } from "./mode";
-export const getUsers: NonNullable<QueryResolvers["getUsers"]> = async (
+import { UserModel } from "../../../model";
+export const getUsers: NonNullable<QueryResolvers['getUsers']> = async (
   _parent,
   _arg,
   _ctx

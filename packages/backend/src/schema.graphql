@@ -9,9 +9,27 @@ type Todo {
 type User {
   id: Int!
   name: String!
+  # todo: todoが任意になってしまっている
   todo: [Todo]
+}
+
+input CreateTodoInput {
+  title: String!
+  description: String
+  userId: Int!
+}
+
+input UpdateTodoInput {
+  id: Int!
+  isCompleted: Boolean!
 }
 
 type Query {
   getUsers: [User]
+}
+
+type Mutation {
+  createTodo(input: CreateTodoInput!): Boolean!
+  updateTodo(input: UpdateTodoInput!): Boolean!
+  deleteTodo(id: Int!): Boolean!
 }
