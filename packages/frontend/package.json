@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.24.6",
     "@yamada-ui/react": "^1.2.7",
+    "graphql-request": "^6.1.0",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18"

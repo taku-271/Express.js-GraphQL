@@ -2,7 +2,7 @@ type Todo {
   id: Int!
   title: String!
   description: String
-  isCompleted: Boolean
+  isCompleted: Boolean!
   userId: Int!
 }
 
@@ -26,6 +26,7 @@ input UpdateTodoInput {
 
 type Query {
   getUsers: [User]
+  getTodos(userId: Int!): [Todo]
 }
 
 type Mutation {

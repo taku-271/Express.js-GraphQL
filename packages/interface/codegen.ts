@@ -3,6 +3,7 @@ import { defineConfig } from "@eddeee888/gcg-typescript-resolver-files";
 
 const config: CodegenConfig = {
   schema: "src/schema.graphql",
+  documents: ["src/documents/**/*.graphql"],
   generates: {
     "../backend/src/graphql/": defineConfig({
       typesPluginsConfig: {
@@ -10,7 +11,11 @@ const config: CodegenConfig = {
       },
     }),
     "../frontend/graphql/graphql.ts": {
-      plugins: ["typescript"],
+      plugins: [
+        "typescript",
+        "typescript-graphql-request",
+        "typescript-operations",
+      ],
     },
   },
 };

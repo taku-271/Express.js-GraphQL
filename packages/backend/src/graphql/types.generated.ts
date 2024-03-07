@@ -47,14 +47,20 @@ export type MutationupdateTodoArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  getTodos?: Maybe<Array<Maybe<Todo>>>;
   getUsers?: Maybe<Array<Maybe<User>>>;
+};
+
+
+export type QuerygetTodosArgs = {
+  userId: Scalars['Int']['input'];
 };
 
 export type Todo = {
   __typename?: 'Todo';
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
-  isCompleted?: Maybe<Scalars['Boolean']['output']>;
+  isCompleted: Scalars['Boolean']['output'];
   title: Scalars['String']['output'];
   userId: Scalars['Int']['output'];
 };
@@ -173,13 +179,14 @@ export type MutationResolvers<ContextType = GraphQLContext, ParentType extends R
 };
 
 export type QueryResolvers<ContextType = GraphQLContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  getTodos?: Resolver<Maybe<Array<Maybe<ResolversTypes['Todo']>>>, ParentType, ContextType, RequireFields<QuerygetTodosArgs, 'userId'>>;
   getUsers?: Resolver<Maybe<Array<Maybe<ResolversTypes['User']>>>, ParentType, ContextType>;
 };
 
 export type TodoResolvers<ContextType = GraphQLContext, ParentType extends ResolversParentTypes['Todo'] = ResolversParentTypes['Todo']> = {
   description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  isCompleted?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  isCompleted?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;

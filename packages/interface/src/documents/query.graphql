@@ -1,0 +1,8 @@
+query getTodosByUserId($userId: Int!) {
+  getTodos(userId: $userId) {
+    id
+    title
+    description
+    isCompleted
+  }
+}
